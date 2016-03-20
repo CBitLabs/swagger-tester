@@ -210,7 +210,8 @@ def swagger_test(swagger_yaml_path=None, app_url=None, authorize_error=None,
                                 app_url=app_url,
                                 authorize_error=authorize_error,
                                 wait_between_test=wait_between_test,
-                                use_example=use_example):
+                                use_example=use_example,
+                                parameter_definitions=parameter_definitions):
         pass
 
 
