@@ -184,7 +184,7 @@ def get_method_from_action(client, action):
 
 
 def swagger_test(swagger_yaml_path=None, app_url=None, authorize_error=None,
-                 wait_between_test=False, use_example=True, custom_parameter_definitions={}):
+                 wait_between_test=False, use_example=True, parameter_definitions={}):
     """Test the given swagger api.
 
     Test with either a swagger.yaml path for a connexion app or with an API
@@ -215,7 +215,7 @@ def swagger_test(swagger_yaml_path=None, app_url=None, authorize_error=None,
 
 
 def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=None,
-                       wait_between_test=False, use_example=True, custom_parameter_definitions={}):
+                       wait_between_test=False, use_example=True, parameter_definitions={}):
     """Test the given swagger api. Yield the action and operation done for each test.
 
     Test with either a swagger.yaml path for a connexion app or with an API
@@ -249,11 +249,11 @@ def swagger_test_yield(swagger_yaml_path=None, app_url=None, authorize_error=Non
         app.add_api(os.path.basename(swagger_yaml_path))
         app_client = app.app.test_client()
         swagger_parser = SwaggerParser(swagger_yaml_path, use_example=use_example,
-                                       custom_parameter_definitions=custom_parameter_definitions)
+                                       parameter_definitions=parameter_definitions)
     elif app_url is not None:
         app_client = requests
         swagger_parser = SwaggerParser(swagger_dict=requests.get(u'{0}/swagger.json'.format(app_url)).json(),
-                                       use_example=False, custom_parameter_definitions=custom_parameter_definitions)
+                                       use_example=False, parameter_definitions=parameter_definitions)
     else:
         raise ValueError('You must either specify a swagger.yaml path or an app url')
 
