@@ -184,7 +184,7 @@ def get_method_from_action(client, action):
 
 
 def swagger_test(swagger_yaml_path=None, app_url=None, authorize_error=None,
-                 wait_between_test=False, use_example=True):
+                 wait_between_test=False, use_example=True, custom_parameter_definitions={}):
     """Test the given swagger api.
 
     Test with either a swagger.yaml path for a connexion app or with an API
